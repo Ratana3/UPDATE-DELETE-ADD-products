@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <title>My Webpage</title>
+</head>
+<body>
+<h1>1. variable</h1>
+<div>
+    <h4>{{ "Hello ST34" }}</h4>
+</div>
+
+<h1>2. Math</h1>
+<div>
+    <h4>2 + 3 = {{ 2 + 3 }}</h4>
+
+</div>
+
+<h1>3. if else statement</h1>
+<div>
+    {% if age > 18  %}
+        <h4>Can drink</h4>
+    {% else %}
+            <p>Can't drink</p>
+    {% endif %}
+</div>
+
+<h1>4. for loop with dictionary list</h1>
+<div>
+    <ul>
+        {% for student in student_list %}
+            <li><h4>{{ student.name }} - {{ student.age }} - {{ student.gender }}</h4></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<h1>5. include a template</h1>
+<div>
+{% include('text.html') %}
+</div>
+
+<h1>6. filter</h1>
+<div>
+    {% filter upper %}
+        <h4>This text becomes uppercase</h4>
+    {% endfilter %}
+</div>
+
+<h1>7. macros</h1>
+{% macro render_input(label)%}
+    <h4>{{ label }}</h4>
+{%endmacro%}
+<div>
+    <h4>{{ render_input('Macro OOP') }}</h4>
+</div>
+
+<h1>8. set statement</h1>
+<div>
+    {% set example = 'ST3.4' %}
+    <h4>{{ example }}</h4>
+</div>
+
+<h1>9. comments</h1>
+<div>
+{# Comment statement! it doesn't render #}
+    <h4>Comment</h4>
+</div>
+
+<h1>10. Default values</h1>
+<div>
+<h4>Default value:         {{  name | default('Guest') }}</h4>
+    <h4>Not default value: {{ 'Hello'  | default('Guest') }}</h4>
+</div>
+
+<h1>11. With statement</h1>
+<div>
+{% with %}
+    {% set number = 42 %}
+    <h4>{{ number }}  </h4>
+{% endwith %}
+</div>
+
+<h1>12. Using data from list of dictionaries</h1>
+<div>
+{% for student in student_list %}
+    <li><h4>{{ student.name }} ({{ student.age }})</h4></li>
+        {% endfor %}
+</div>
+
+<h1>13.Conditional within a Loop:</h1>
+<div>
+{% for item in subjects %}
+    {% if item.startswith('P') %}
+        <li>{{ item }}</li>
+    {% endif %}
+{% endfor %}
+</div>
+
+<h1>14.Loop with Length Check</h1>
+<div>
+<ul>
+        {% for item in subjects %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <p>Total subjects: {{ subjects | length }}</p>
+</div>
+
+<h1>15. Escaping </h1>
+<div>
+{% raw %}
+    <ul>
+    {% for item in seq %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+{% endraw %}
+</div>
+
+<h1>16. Line statement</h1>
+<div>
+<ul>
+# for item in subjects
+    <li>{{ subjects }}</li>
+# endfor
+</ul>
+<ul>
+{% for item in subjects %}
+    <li>{{ item }}</li>
+{% endfor %}
+</ul>
+</div>
+
+<h1>17.Call </h1>
+<div>
+{% macro dialog(title) -%}
+    <div>
+        <h2>{{ title }}</h2>
+        <div>
+            {{ caller() }}
+        </div>
+    </div>
+{%- endmacro %}
+
+{% call dialog('Using call block') %}
+    This is a simple dialog rendered by using a macro and
+    a call block.
+{% endcall %}
+</div>
+
+<h1>18. Block assignments</h1>
+<div>
+{% set navigation %}
+    <h4>Hello world.</h4>
+    <h4>This is block assignment.</h4>
+{% endset %}
+
+    {{ navigation }}
+</div>
+
+<h1>19.Template inheritance</h1>
+<div >{% block content %}
+<div>Template inheritance OOP</div>
+{% endblock %}</div>
+
+<h1>20. Tests</h1>
+<div>
+{% if subjects.index is integer %}
+    {{ subjects.index }}
+    {% else %}
+        variable is not an integer
+     {% endif %}
+</div>
+
+</body>
+</html>

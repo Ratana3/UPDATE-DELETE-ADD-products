@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+</head>
+<body>
+    <h2>Product Management</h2>
+    <form action="{{ url_for('edit_product', product_id=product_id) }}" method="get">
+        <button type="submit">Edit Product with ID {{ product_id }}</button>
+    </form>
+</body>
+</html>
